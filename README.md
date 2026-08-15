@@ -52,10 +52,7 @@ IRIS-868 is a custom embedded RF platform based on the STM32F303RET6 microcontro
 - [Board specification](#-board-specification)
 - [Bill of materials](#-bill-of-materials)
 - [Getting started](#-getting-started)
-- [Firmware notes](#-firmware-notes)
 - [Known limitations](#-known-limitations)
-- [Regulatory](#-regulatory)
-- [License](#-license)
 
 ## 🖼️ Gallery
 
