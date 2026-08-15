@@ -1,0 +1,7 @@
+(version 1)
+
+(rule "RF feedline coplanar gap"
+    (layer "F.Cu")
+    (condition "A.NetName == 'ANT'")
+    (constraint clearance (min 0.15mm) (opt 0.15mm))
+)
