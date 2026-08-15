@@ -555,7 +555,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "GERBER/",
+      "plot": "../gerbers/rev.A/",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
