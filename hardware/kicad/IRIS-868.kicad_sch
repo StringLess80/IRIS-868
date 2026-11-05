@@ -6,9 +6,9 @@
 	(paper "A4")
 	(title_block
 		(title "IRIS-868")
-		(date "2026-08-12")
-		(rev "1.0")
-		(comment 1 "STM32F303RET6 + LLCC68 868 MHz RF Node")
+		(date "2026-11-03")
+		(rev "B")
+		(comment 1 "STM32F303RET6 + E22-900M22S (SX1262) 868 MHz RF Node")
 		(comment 2 "https://github.com/StringLess80")
 	)
 	(lib_symbols
@@ -10855,7 +10855,141 @@
 			)
 		)
 	)
-	(sheet_instances
+	  (symbol (lib_id "Device:R_US") (at 134.62 76.2 0) (unit 1)
+    (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+    (uuid "9e004c0c-1de9-405f-8d3c-d12cee551cab")
+    (property "Reference" "R13"
+      (at 137.16 76.2 90)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Value" "100k"
+      (at 132.08 76.2 90)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 135.636 75.946 90)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Datasheet" ""
+      (at 134.62 76.2 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Description" "Resistor, US symbol"
+      (at 134.62 76.2 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (pin "1" (uuid "c2cc4f04-ccea-4035-8763-3b4077a322a5"))
+    (pin "2" (uuid "d115da53-f030-4bbc-8d3b-0bf896952d43"))
+    (instances
+      (project "IRIS-868"
+        (path "/1212316b-1ebb-41cb-858a-b619033e2683"
+          (reference "R13")
+          (unit 1)
+        )
+      )
+    )
+  )
+    (symbol (lib_id "power:GND") (at 134.62 80.01 0) (unit 1)
+    (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+    (uuid "2376f6b8-b7e9-4bda-a59a-ffced5342dfb")
+    (property "Reference" "#PWR039"
+      (at 134.62 73.66 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Value" "GND"
+      (at 134.62 83.82 0)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Footprint" ""
+      (at 134.62 80.01 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Datasheet" ""
+      (at 134.62 80.01 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+      (at 134.62 80.01 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+    )
+    (pin "1" (uuid "69413808-65d7-4145-8331-75ee25b68e7a"))
+    (instances
+      (project "IRIS-868"
+        (path "/1212316b-1ebb-41cb-858a-b619033e2683"
+          (reference "#PWR039")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (sheet_instances
 		(path "/"
 			(page "1")
 		)
