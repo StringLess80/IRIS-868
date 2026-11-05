@@ -41,3 +41,13 @@ fp-info-cache
 
 # Local project settings
 *.kicad_prl
+
+# Local tool output
+.mcp-backups/
+_restore_backup_*/
+logs/
+*.rpt
+f8_report.txt
+
+# Release assets, published on GitHub Releases
+hardware/gerbers/*.zip
