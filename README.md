@@ -43,7 +43,7 @@ IRIS-868 is a custom embedded RF platform based on the STM32F303RET6 microcontro
 | 🛠️ **Tooling** | KiCad 10, footprints and symbols embedded in the project files |
 
 > [!WARNING]
-> **Revision B is design-complete but has not been bring-up tested.** Fabrication files are released as-is. No firmware is included in this repository yet. See [Known limitations](#-known-limitations) before ordering.
+> **Revision B is design-complete but has not been bring-up tested.** Fabrication files are released as-is. No firmware is included in this repository yet.
 
 ## 📑 Table of contents
 
@@ -57,7 +57,6 @@ IRIS-868 is a custom embedded RF platform based on the STM32F303RET6 microcontro
 - [Bill of materials](#-bill-of-materials)
 - [Getting started](#-getting-started)
 - [Releases](#-releases)
-- [Known limitations](#-known-limitations)
 
 ## 🆕 What's new in revision B
 
@@ -184,7 +183,7 @@ A **Winbond W25Q128JVSIQ** (SOIC-8, 208 mil) on the bottom side provides 16 MiB 
 
 ### USB
 
-The USB D+ 1.5 kΩ pull-up (R2) is connected to **PB8** rather than to +3.3 V. Firmware must drive PB8 high to signal device attach to the host, and can drive it low to force a clean disconnect/re-enumeration without unplugging the cable. See [Known limitations](#-known-limitations) for the effect on the ROM DFU bootloader.
+The USB D+ 1.5 kΩ pull-up (R2) is connected to **PB8** rather than to +3.3 V. Firmware must drive PB8 high to signal device attach to the host, and can drive it low to force a clean disconnect/re-enumeration without unplugging the cable.
 
 ### Interfaces
 
@@ -378,7 +377,7 @@ st-flash --reset write firmware.bin 0x08000000
 stm32flash -w firmware.bin -v -g 0x0 /dev/ttyUSB0
 ```
 
-**Via USB DFU** — the ROM bootloader does not drive PB8, so the D+ pull-up is inactive and the host will not see the device (see [Known limitations](#-known-limitations)). Tie J5 pin 12 (`PB8`) to J5 pin 2 (`+3.3V`) for the duration of the DFU session, fit the J1 jumper on pins 2–3, reset, then:
+**Via USB DFU** — the ROM bootloader does not drive PB8, so the D+ pull-up is inactive and the host will not see the device. Tie J5 pin 12 (`PB8`) to J5 pin 2 (`+3.3V`) for the duration of the DFU session, fit the J1 jumper on pins 2–3, reset, then:
 
 ```bash
 dfu-util -a 0 -s 0x08000000:leave -D firmware.bin
@@ -399,19 +398,6 @@ Remove the jumper, or move it to pins 1–2, and reset to run from flash.
 | [`v1.0.0`](https://github.com/StringLess80/IRIS-868/releases/tag/v1.0.0) | Revision A | Superseded |
 
 The major version changes with each PCB revision. Minor and patch versions cover compatible changes to the BOM, documentation or fabrication outputs. See the [changelog](CHANGELOG.md) for details.
-
-## 🐛 Known limitations
-
-Revision B has the following documented issues and constraints:
-
-| # | Issue | Impact | Workaround |
-|:---:|---|---|---|
-| 1 | **USB D+ pull-up depends on PB8** | ROM USB DFU bootloader cannot enumerate; PB8 on J5 is effectively reserved for USB | Use SWD or the UART bootloader, or link PB8 to +3.3 V during DFU. Don't load J5 pin 12 when USB is used |
-| 2 | **Flash wired for single SPI only** — /WP and /HOLD are pulled up, not routed to the MCU | No dual/quad I/O | None needed for most logging workloads |
-| 3 | **Some GPIOs still unrouted** — `PA0`, `PA1`, `PB2`, `PB3`, `PB12`–`PB15`, `PC1`–`PC3`, `PC9`, `PC14`, `PC15`; J7 pins 11–12 are unused | Fewer I/Os than the MCU offers | Rework |
-| 4 | **ROM USB DFU not verified** — ST advises an HSE of 8 MHz or lower for USB bootloading, and this board uses 16 MHz | DFU may not work even with the PB8 link | Use SWD or the UART bootloader |
-
-Resolved from revision A: NRST is now on the SWD header, most previously unrouted GPIOs are available on J5 / J7, and BOOT0 no longer floats without a jumper.
 
 <div align="center">
 <br/>
